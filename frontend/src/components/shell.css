@@ -1,0 +1,586 @@
+/* ---------------------------------------------------------------------------
+ * Application chrome: title bar, menu bar, connection strip, mode bar, status bar.
+ * Laid out as a fixed-height column so the image stage takes whatever is left and
+ * the window itself never scrolls.
+ * ------------------------------------------------------------------------- */
+
+.app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--chrome);
+}
+
+.app__titlebar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 10px;
+  background: linear-gradient(180deg, #f6f8f9, #dfe4e8);
+  border-bottom: 1px solid var(--chrome-line);
+  font-size: 12px;
+  color: var(--text-h);
+}
+
+.app__titlebar strong {
+  font-weight: 600;
+}
+
+.app__titlebar-spacer {
+  flex: 1;
+}
+
+/* The brand mark, drawn from the shared SVG so every place it appears stays in step. */
+.app__logo {
+  width: 18px;
+  height: 18px;
+  background: url('/logo.svg') center / contain no-repeat;
+}
+
+.app__menubar {
+  display: flex;
+  gap: 2px;
+  padding: 2px 6px;
+  background: var(--chrome);
+  border-bottom: 1px solid var(--chrome-line);
+}
+
+.app__menubar button {
+  padding: 3px 10px;
+  border: 1px solid transparent;
+  background: none;
+  font: inherit;
+  font-size: 12px;
+  color: var(--text-h);
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.app__menubar button:hover:not(:disabled) {
+  background: var(--chrome-dark);
+  border-color: var(--chrome-line);
+}
+
+.app__menubar button:disabled {
+  color: var(--text-dim);
+  cursor: default;
+}
+
+/* Connection strip — the reference's "Change Connected Sensor / Disconnect" row. */
+.app__connbar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 5px 10px;
+  background: var(--chrome-dark);
+  border-bottom: 1px solid var(--chrome-line);
+  font-size: 12px;
+}
+
+.app__connbar .dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #9aa3aa;
+  margin-right: 6px;
+  vertical-align: -1px;
+}
+
+.app__connbar .dot.is-on {
+  background: var(--ok);
+  box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.2);
+}
+
+/* ---------------------------------------------------------------------------
+ * Mode bar: Run / Program, the recipe selector, and the secondary actions.
+ * ------------------------------------------------------------------------- */
+
+.modebar {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  padding: 8px 10px;
+  background: var(--chrome);
+  border-bottom: 1px solid var(--chrome-line);
+}
+
+.modebar__mode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 170px;
+  padding: 10px 18px;
+  border: 2px solid var(--chrome-line);
+  border-radius: 4px;
+  background: linear-gradient(180deg, #fdfdfd, #e6eaed);
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--text-dim);
+  cursor: pointer;
+}
+
+.modebar__mode:hover:not(:disabled) {
+  border-color: #8f979e;
+}
+
+.modebar__mode.is-active {
+  border-color: var(--accent-line);
+  background: linear-gradient(180deg, #ffd464, var(--accent));
+  color: #3b2c00;
+}
+
+.modebar__mode:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.modebar__group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 10px 8px;
+  border: 1px solid var(--chrome-line);
+  border-radius: 4px;
+  background: var(--panel);
+}
+
+.modebar__group legend,
+.modebar__group > .legend {
+  position: absolute;
+  top: -8px;
+  left: 8px;
+  padding: 0 4px;
+  background: var(--chrome);
+  font-size: 11px;
+  color: var(--text);
+}
+
+.modebar__spacer {
+  flex: 1;
+}
+
+.modebar__actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ---------------------------------------------------------------------------
+ * Body: image stage on the left, tool panels on the right.
+ * ------------------------------------------------------------------------- */
+
+.app__body {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+  background: var(--chrome);
+}
+
+.app__stage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border-right: 1px solid var(--chrome-line);
+}
+
+.app__side {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  /* Four stacked panes can outgrow a short window; the column scrolls rather than clipping. */
+  overflow-y: auto;
+  background: var(--panel);
+}
+
+.app__statusbar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0;
+  background: var(--chrome-dark);
+  border-top: 1px solid var(--chrome-line);
+  font-size: 11px;
+  color: var(--text);
+}
+
+.app__statusbar span {
+  padding: 4px 10px;
+  border-right: 1px solid var(--chrome-line);
+  white-space: nowrap;
+}
+
+.app__statusbar b {
+  font-family: var(--mono);
+  font-weight: 400;
+  color: var(--text-h);
+}
+
+/* ---------------------------------------------------------------------------
+ * Shared controls
+ * ------------------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-sizing: border-box;
+  /* One shared control height, so buttons and fields sitting in the same row line up. */
+  height: 28px;
+  padding: 0 12px;
+  border: 1px solid var(--chrome-line);
+  border-radius: 3px;
+  background: linear-gradient(180deg, #fdfdfd, #e9edf0);
+  font: inherit;
+  font-size: 12px;
+  color: var(--text-h);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn:hover:not(:disabled) {
+  background: linear-gradient(180deg, #ffffff, #dfe5e9);
+  border-color: #8f979e;
+}
+
+.btn:active:not(:disabled) {
+  background: #dfe5e9;
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn.is-primary {
+  border-color: var(--accent-line);
+  background: linear-gradient(180deg, #ffd464, var(--accent));
+  color: #3b2c00;
+  font-weight: 600;
+}
+
+.btn.is-danger {
+  color: var(--ng);
+}
+
+.field {
+  box-sizing: border-box;
+  height: 28px;
+  padding: 0 7px;
+  border: 1px solid var(--chrome-line);
+  border-radius: 3px;
+  background: var(--field);
+  font: inherit;
+  font-size: 12px;
+  color: var(--text-h);
+}
+
+.field:focus {
+  outline: 2px solid rgba(43, 124, 211, 0.35);
+  outline-offset: -1px;
+}
+
+.labeled {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 11px;
+  color: var(--text);
+}
+
+.labeled small {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-dim);
+}
+
+/*
+ * Panel section inside the right-hand column. Never shrinks below its content — a flex item that
+ * does clips its own text behind the next pane's heading. The column scrolls instead.
+ */
+.pane {
+  flex: none;
+  border-bottom: 1px solid var(--panel-line);
+}
+
+.pane__title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 5px 10px;
+  background: var(--chrome-dark);
+  border-bottom: 1px solid var(--panel-line);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.pane__body {
+  padding: 10px;
+  overflow: auto;
+}
+
+/*
+ * Takes any spare height but never shrinks below its own content: squeezed by the panes below it,
+ * it used to clip its list mid-row and draw over the next pane's heading. When there is not enough
+ * room for everything, the column scrolls instead.
+ */
+.pane--fill {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.pane--fill .pane__body {
+  flex: 1 0 auto;
+}
+
+.empty {
+  padding: 18px 10px;
+  color: var(--text-dim);
+  font-size: 12px;
+  text-align: center;
+}
+
+/* ---------------------------------------------------------------------------
+ * Modal dialogs
+ * ------------------------------------------------------------------------- */
+
+.modal__scrim {
+  position: fixed;
+  inset: 0;
+  background: rgba(16, 20, 24, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.modal {
+  width: min(560px, calc(100vw - 40px));
+  max-height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--chrome-line);
+  border-radius: 5px;
+  background: var(--chrome);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+}
+
+.modal__title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 10px;
+  background: linear-gradient(180deg, #f6f8f9, #dfe4e8);
+  border-bottom: 1px solid var(--chrome-line);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.modal__body {
+  flex: 1;
+  min-height: 0;
+  padding: 12px;
+  overflow: auto;
+  background: var(--panel);
+}
+
+.modal__footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 8px 10px;
+  border-top: 1px solid var(--chrome-line);
+}
+
+.row {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+/* A button beside labelled inputs: an invisible label above it puts it level with the inputs,
+   not with the hint line underneath them. */
+.labeled--action > span {
+  visibility: hidden;
+}
+
+.labeled--action > small {
+  visibility: hidden;
+}
+
+.error-text {
+  margin: 0 0 10px;
+  padding: 7px 9px;
+  border: 1px solid rgba(220, 38, 38, 0.35);
+  border-radius: 3px;
+  background: rgba(220, 38, 38, 0.08);
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ng);
+}
+
+.hint-text {
+  margin: 0 0 8px;
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+/* Window list in Program mode. */
+.window-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  /* Long tool lists scroll here instead of pushing the panes below off the screen. */
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.window-list button {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  width: 100%;
+  padding: 6px 9px;
+  margin-bottom: 4px;
+  border: 1px solid var(--panel-line);
+  border-radius: 3px;
+  background: var(--field);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.window-list button:hover {
+  border-color: #8f979e;
+}
+
+.window-list button.is-selected {
+  border-color: var(--info);
+  box-shadow: inset 3px 0 0 var(--info);
+}
+
+.window-list b {
+  font-size: 12px;
+  color: var(--text-h);
+}
+
+.window-list small {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-dim);
+}
+
+.about__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.about__brand strong {
+  font-size: 20px;
+  color: var(--brand);
+}
+
+.about__brand .app__logo {
+  width: 40px;
+  height: 40px;
+}
+
+/* A menu item that reads as status rather than an action. */
+.app__menubar .menu-status {
+  margin-left: auto;
+  padding: 3px 10px;
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.app__menubar .menu-status.is-error {
+  color: var(--ng);
+}
+
+.modal__dirty {
+  margin-right: auto;
+  align-self: center;
+  font-size: 11px;
+  color: var(--accent-line);
+}
+
+/* Taught readings for the selected window: good in green, bad in red, so the separation between
+   the two clusters is visible at a glance. */
+.samples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+.samples span {
+  padding: 1px 7px;
+  border-radius: 3px;
+  font-family: var(--mono);
+  font-size: 11px;
+}
+
+.samples span.is-ok {
+  background: rgba(22, 163, 74, 0.14);
+  color: var(--ok);
+}
+
+.samples span.is-ng {
+  background: rgba(220, 38, 38, 0.14);
+  color: var(--ng);
+}
+
+/* What the tool read when it was tried, before any limit is set on it. */
+.trial {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-top: 8px;
+  padding: 8px 10px;
+  border: 1px solid var(--panel-line);
+  border-radius: 3px;
+  background: var(--field);
+}
+
+.trial b {
+  font-family: var(--mono);
+  font-size: 20px;
+  color: var(--text-h);
+}
+
+.trial code {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--brand);
+  word-break: break-all;
+}
+
+.trial small {
+  font-size: 10px;
+  color: var(--text-dim);
+}
+
+/* The expected string beside what was read, and the note explaining any gap between them. */
+.trial code.is-expected {
+  color: var(--text-dim);
+}
+
+.trial small.is-note {
+  color: var(--accent-line);
+}

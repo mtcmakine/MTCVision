@@ -1,0 +1,184 @@
+/* Two classes, not one: shell.css loads later and its plain .modal width would otherwise win. */
+.modal.modal--history {
+  width: min(1000px, calc(100vw - 40px));
+  height: min(680px, calc(100vh - 60px));
+}
+
+.history {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.history__count {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-dim);
+}
+
+/* List on the left, preview on the right; only the list scrolls. */
+.history__split {
+  flex: 1;
+  display: flex;
+  gap: 10px;
+  min-height: 0;
+  margin-top: 4px;
+}
+
+.history__list {
+  width: 320px;
+  flex: none;
+  overflow-y: auto;
+  border: 1px solid var(--panel-line);
+  border-radius: 3px;
+  background: var(--field);
+}
+
+.history__item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  padding: 6px 8px;
+  border: none;
+  border-bottom: 1px solid var(--panel-line);
+  background: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.history__item:hover {
+  background: #eef2f5;
+}
+
+.history__item.is-selected {
+  background: #e2ecf6;
+  box-shadow: inset 3px 0 0 var(--info);
+}
+
+.history__item img {
+  width: 64px;
+  height: 48px;
+  flex: none;
+  object-fit: cover;
+  background: #000;
+  border: 1px solid var(--panel-line);
+}
+
+.history__meta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+.history__meta b {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.history__meta small {
+  font-size: 10px;
+  color: var(--text-dim);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.history__verdict {
+  flex: none;
+  padding: 1px 7px;
+  border-radius: 3px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.history__verdict.is-ok {
+  background: rgba(22, 163, 74, 0.15);
+  color: var(--ok);
+}
+
+.history__verdict.is-ng {
+  background: rgba(220, 38, 38, 0.15);
+  color: var(--ng);
+}
+
+.history__preview {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--panel-line);
+  border-radius: 3px;
+  background: var(--stage);
+  padding: 8px;
+  overflow: auto;
+}
+
+.history__preview img {
+  width: 100%;
+  min-height: 0;
+  flex: 1;
+  object-fit: contain;
+  background: #000;
+}
+
+.history__preview .hint-text,
+.history__preview .empty {
+  color: #cbd3d9;
+  margin: 8px 0 0;
+}
+
+.history__rejudge {
+  margin-top: 8px;
+  padding: 8px 10px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.94);
+}
+
+.history__rejudge strong {
+  font-family: var(--mono);
+  font-size: 18px;
+  margin-right: 8px;
+}
+
+.history__rejudge.is-ok strong {
+  color: var(--ok);
+}
+
+.history__rejudge.is-ng strong {
+  color: var(--ng);
+}
+
+.history__rejudge span {
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.history__rejudge table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 6px;
+  font-family: var(--mono);
+  font-size: 11px;
+}
+
+.history__rejudge td {
+  padding: 3px 6px;
+  border-top: 1px solid var(--panel-line);
+  color: var(--text-h);
+}
+
+.history__rejudge tr.is-ok td:last-child {
+  color: var(--ok);
+  font-weight: 700;
+}
+
+.history__rejudge tr.is-ng td:last-child {
+  color: var(--ng);
+  font-weight: 700;
+}

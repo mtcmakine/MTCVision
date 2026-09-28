@@ -1,0 +1,14 @@
+F:\Files\09_ARGE\MTCVision\MTCVision\tools\DemoTerminal\bin\Debug\net8.0\MTCVision.DemoTerminal.exe
+F:\Files\09_ARGE\MTCVision\MTCVision\tools\DemoTerminal\bin\Debug\net8.0\MTCVision.DemoTerminal.deps.json
+F:\Files\09_ARGE\MTCVision\MTCVision\tools\DemoTerminal\bin\Debug\net8.0\MTCVision.DemoTerminal.runtimeconfig.json
+F:\Files\09_ARGE\MTCVision\MTCVision\tools\DemoTerminal\bin\Debug\net8.0\MTCVision.DemoTerminal.dll
+F:\Files\09_ARGE\MTCVision\MTCVision\tools\DemoTerminal\bin\Debug\net8.0\MTCVision.DemoTerminal.pdb
+F:\Files\09_ARGE\MTCVision\MTCVision\tools\DemoTerminal\obj\Debug\net8.0\DemoTerminal.GeneratedMSBuildEditorConfig.editorconfig
+F:\Files\09_ARGE\MTCVision\MTCVision\tools\DemoTerminal\obj\Debug\net8.0\DemoTerminal.AssemblyInfoInputs.cache
+F:\Files\09_ARGE\MTCVision\MTCVision\tools\DemoTerminal\obj\Debug\net8.0\DemoTerminal.AssemblyInfo.cs
+F:\Files\09_ARGE\MTCVision\MTCVision\tools\DemoTerminal\obj\Debug\net8.0\DemoTerminal.csproj.CoreCompileInputs.cache
+F:\Files\09_ARGE\MTCVision\MTCVision\tools\DemoTerminal\obj\Debug\net8.0\MTCVision.DemoTerminal.dll
+F:\Files\09_ARGE\MTCVision\MTCVision\tools\DemoTerminal\obj\Debug\net8.0\refint\MTCVision.DemoTerminal.dll
+F:\Files\09_ARGE\MTCVision\MTCVision\tools\DemoTerminal\obj\Debug\net8.0\MTCVision.DemoTerminal.pdb
+F:\Files\09_ARGE\MTCVision\MTCVision\tools\DemoTerminal\obj\Debug\net8.0\DemoTerminal.genruntimeconfig.cache
+F:\Files\09_ARGE\MTCVision\MTCVision\tools\DemoTerminal\obj\Debug\net8.0\ref\MTCVision.DemoTerminal.dll

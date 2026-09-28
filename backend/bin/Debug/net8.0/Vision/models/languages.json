@@ -1,0 +1,46 @@
+[
+  {
+    "id": "latin",
+    "name": "Latin / Türkçe",
+    "description": "Türkçe, İngilizce, İtalyanca, Almanca, Fransızca, İspanyolca, Yunanca ve Çince",
+    "model": "ch_PP-OCRv5_rec_mobile.onnx",
+    "dictionary": "ppocrv5_dict.txt",
+    "isDefault": true
+  },
+  {
+    "id": "turkish",
+    "name": "Türkçe (bu hat için eğitilmiş — yatay yazı)",
+    "description": "Türkçe harfleri korur; şu an yalnızca yatay yazıda kullanılmalı",
+    "model": "turkish_rec.onnx",
+    "dictionary": "turkish_dict.txt",
+    "lineModel": true
+  },
+  {
+    "id": "arabic",
+    "name": "Arapça",
+    "description": "Arapça, Farsça, Urduca",
+    "model": "arabic_PP-OCRv5_rec_mobile.onnx",
+    "dictionary": "ppocrv5_arabic_dict.txt"
+  },
+  {
+    "id": "cyrillic",
+    "name": "Kiril",
+    "description": "Rusça, Ukraynaca, Bulgarca, Sırpça",
+    "model": "cyrillic_PP-OCRv5_rec_mobile.onnx",
+    "dictionary": "ppocrv5_cyrillic_dict.txt"
+  },
+  {
+    "id": "korean",
+    "name": "Korece",
+    "description": "Korece (Hangul)",
+    "model": "korean_PP-OCRv5_rec_mobile.onnx",
+    "dictionary": "ppocrv5_korean_dict.txt"
+  },
+  {
+    "id": "devanagari",
+    "name": "Devanagari",
+    "description": "Hintçe, Marathi, Nepalce",
+    "model": "devanagari_PP-OCRv5_rec_mobile.onnx",
+    "dictionary": "ppocrv5_devanagari_dict.txt"
+  }
+]

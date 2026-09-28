@@ -1,0 +1,56 @@
+/*
+ * Desktop-instrument chrome. Deliberately not theme-aware: this is a machine-vision console that
+ * sits next to a line, and an operator reading OK/NG at a glance needs the same colours on every
+ * station regardless of what the workstation's theme happens to be.
+ */
+:root {
+  --chrome: #eceff1;
+  --chrome-dark: #dfe3e6;
+  --chrome-line: #b9c0c6;
+  --panel: #f7f8f9;
+  --panel-line: #cdd3d8;
+  --field: #ffffff;
+
+  --text: #4a545c;
+  --text-h: #1b2126;
+  --text-dim: #7a848c;
+
+  --brand: #2c6394;
+  --brand-dark: #1f4a70;
+  --accent: #f0a500;
+  --accent-line: #c98a00;
+  --ok: #16a34a;
+  --ng: #dc2626;
+  --info: #2b7cd3;
+
+  /* The surround behind a letterboxed frame, and the frame area itself. */
+  --stage: #4a4f54;
+  --verdict-bar: #14181b;
+
+  --sans: 'Segoe UI', system-ui, Roboto, sans-serif;
+  --mono: 'Cascadia Mono', Consolas, ui-monospace, monospace;
+
+  font: 13px/1.35 var(--sans);
+  color: var(--text-h);
+  color-scheme: light;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--chrome);
+  /* The app owns the viewport; individual panes scroll, the window never does. */
+  overflow: hidden;
+}

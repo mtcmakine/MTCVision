@@ -1,0 +1,129 @@
+.gauge {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    'name value'
+    'tool value'
+    'track track'
+    'limits limits';
+  gap: 2px 10px;
+  width: 100%;
+  padding: 7px 9px;
+  margin-bottom: 6px;
+  border: 1px solid var(--panel-line);
+  border-left: 4px solid #9aa3aa;
+  border-radius: 3px;
+  background: var(--field);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.gauge:hover {
+  border-color: #8f979e;
+}
+
+.gauge.is-selected {
+  outline: 2px solid rgba(43, 124, 211, 0.4);
+  outline-offset: -2px;
+}
+
+.gauge--ok {
+  border-left-color: var(--ok);
+}
+
+.gauge--ng {
+  border-left-color: var(--ng);
+  background: rgba(220, 38, 38, 0.05);
+}
+
+.gauge__name {
+  grid-area: name;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.gauge__tool {
+  grid-area: tool;
+  font-size: 10px;
+  color: var(--text-dim);
+}
+
+.gauge__value {
+  grid-area: value;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  align-self: center;
+  font-family: var(--mono);
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.gauge__chip {
+  padding: 1px 6px;
+  border-radius: 3px;
+  background: #e2e6e9;
+  color: var(--text-dim);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.gauge--ok .gauge__chip {
+  background: rgba(22, 163, 74, 0.15);
+  color: var(--ok);
+}
+
+.gauge--ng .gauge__chip {
+  background: rgba(220, 38, 38, 0.15);
+  color: var(--ng);
+}
+
+/* The measurement scale, with the accepted band highlighted and the reading marked. */
+.gauge__track {
+  grid-area: track;
+  position: relative;
+  height: 9px;
+  margin-top: 4px;
+  border: 1px solid var(--panel-line);
+  border-radius: 2px;
+  background: repeating-linear-gradient(90deg, #eef1f3 0 9px, #e6eaed 9px 10px);
+  overflow: hidden;
+}
+
+.gauge__band {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: rgba(22, 163, 74, 0.28);
+  border-left: 1px solid var(--ok);
+  border-right: 1px solid var(--ok);
+}
+
+.gauge__needle {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  width: 2px;
+  margin-left: -1px;
+  background: var(--text-h);
+}
+
+.gauge--ng .gauge__needle {
+  background: var(--ng);
+}
+
+.gauge__limits {
+  grid-area: limits;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-dim);
+}
+
+.gauge__limit-values {
+  color: var(--ok);
+}

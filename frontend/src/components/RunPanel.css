@@ -1,0 +1,82 @@
+.kv {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 12px;
+  margin: 0;
+  font-size: 12px;
+}
+
+.kv dt {
+  color: var(--text);
+}
+
+.kv dd {
+  margin: 0;
+  font-family: var(--mono);
+  color: var(--text-h);
+}
+
+.kv dd.is-ok {
+  color: var(--ok);
+  font-weight: 600;
+}
+
+.kv dd.is-ng {
+  color: var(--ng);
+  font-weight: 600;
+}
+
+/* The reference's bottom-left statistics block: dense label/value pairs in a grid. */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--panel-line);
+  border: 1px solid var(--panel-line);
+}
+
+.stats > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 4px 8px;
+  background: var(--field);
+}
+
+.stats span {
+  font-size: 11px;
+  color: var(--text);
+}
+
+.stats b {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.stats b.is-ok {
+  color: var(--ok);
+}
+
+.stats b.is-ng {
+  color: var(--ng);
+}
+
+/* Where the part was found. Sits above the tool list because it qualifies everything below it:
+   if the part was not located, no window below was measured where it thought it was. */
+.position-note {
+  margin: 0 0 10px;
+  padding: 7px 10px;
+  border-left: 3px solid #4fc3d9;
+  background: rgba(79, 195, 217, 0.08);
+  font-size: 12.5px;
+  color: #cfe6ea;
+}
+
+.position-note.is-bad {
+  border-left-color: #e2574c;
+  background: rgba(226, 87, 76, 0.1);
+  color: #f3c9c5;
+}

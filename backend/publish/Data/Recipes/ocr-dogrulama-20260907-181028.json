@@ -1,0 +1,28 @@
+{
+  "id": "ocr-dogrulama-20260907-181028",
+  "name": "OCR Dogrulama",
+  "createdUtc": "2026-09-07T18:10:28.0459126Z",
+  "updatedUtc": "2026-09-07T18:10:28.0459303Z",
+  "camera": {
+    "exposureTimeUs": null,
+    "gain": null,
+    "frameRateHz": null
+  },
+  "windows": [
+    {
+      "id": "ocr1",
+      "name": "Lazer Baski",
+      "region": {
+        "x": 500,
+        "y": 600,
+        "width": 520,
+        "height": 110
+      },
+      "tool": "Ocr",
+      "lowerLimit": 80,
+      "upperLimit": 100,
+      "expectedText": "MTC-2026-A17",
+      "samples": []
+    }
+  ]
+}

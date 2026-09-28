@@ -1,0 +1,92 @@
+.modal--wide {
+  width: min(720px, calc(100vw - 40px));
+}
+
+.tabs {
+  display: flex;
+  gap: 2px;
+  padding: 6px 8px 0;
+  background: var(--chrome);
+  border-bottom: 1px solid var(--chrome-line);
+}
+
+.tabs button {
+  padding: 5px 14px;
+  border: 1px solid var(--chrome-line);
+  border-bottom: none;
+  border-radius: 3px 3px 0 0;
+  background: var(--chrome-dark);
+  font: inherit;
+  font-size: 12px;
+  color: var(--text);
+  cursor: pointer;
+  /* Overlap the container's bottom border so the active tab merges into the body. */
+  margin-bottom: -1px;
+}
+
+.tabs button:hover:not(:disabled) {
+  background: #e7ebee;
+}
+
+.tabs button.is-active {
+  background: var(--panel);
+  color: var(--text-h);
+  font-weight: 600;
+  border-bottom: 1px solid var(--panel);
+}
+
+.tabs button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.notice-text {
+  margin: 0 0 10px;
+  padding: 7px 9px;
+  border: 1px solid rgba(22, 163, 74, 0.35);
+  border-radius: 3px;
+  background: rgba(22, 163, 74, 0.08);
+  font-size: 12px;
+  color: var(--ok);
+}
+
+/* Focus assist meter: a number to maximise while turning the lens ring. */
+.focus {
+  margin: 12px 0;
+  padding: 14px;
+  border: 1px solid var(--panel-line);
+  border-radius: 4px;
+  background: var(--field);
+  text-align: center;
+}
+
+.focus__value {
+  font-family: var(--mono);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--text-h);
+}
+
+.focus__bar {
+  height: 14px;
+  margin: 10px 0 6px;
+  border: 1px solid var(--panel-line);
+  border-radius: 3px;
+  background: repeating-linear-gradient(90deg, #eef1f3 0 9px, #e6eaed 9px 10px);
+  overflow: hidden;
+}
+
+.focus__fill {
+  height: 100%;
+  background: linear-gradient(90deg, #7dd3a0, var(--ok));
+  transition: width 120ms linear;
+}
+
+.focus__legend {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-dim);
+}

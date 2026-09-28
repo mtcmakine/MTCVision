@@ -1,0 +1,58 @@
+C:\Users\Administrator\Desktop\MTCVision\MTCVision\backend\Properties\launchSettings.json içindeki başlatma ayarları kullanılıyor...
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://localhost:5080
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: C:\Users\Administrator\Desktop\MTCVision\MTCVision\backend
+[Camera] /connect requested at 00:37:15.703
+[Camera:StatusChanged] GenICam ağacı yüklendi: 1349 düğüm (TeledyneDALSA_Nano-IMX264-265_Mono_3.2M-5.1M_a01bdb1c_9CA18.0016.zip).
+[Camera:StatusChanged] Yayın başlatıldı (rx port 55475).
+[Camera:StatusChanged] Görüntü formatı: 2064x1544 Mono8
+[Camera] /connect requested at 00:42:52.369
+[Camera:StatusChanged] GenICam ağacı yüklendi: 1349 düğüm (TeledyneDALSA_Nano-IMX264-265_Mono_3.2M-5.1M_a01bdb1c_9CA18.0016.zip).
+[Camera:StatusChanged] Yayın başlatıldı (rx port 62477).
+[Camera:StatusChanged] Görüntü formatı: 2064x1544 Mono8
+Image too small to scale!! (2x36 vs min width of 3)
+Line cannot be recognized!!
+Image too small to scale!! (2x36 vs min width of 3)
+Line cannot be recognized!!
+Image too small to scale!! (1x36 vs min width of 3)
+Line cannot be recognized!!
+Image too small to scale!! (2x36 vs min width of 3)
+Line cannot be recognized!!
+Bottom=0, top=410, base=0, x=0
+
+Total count=0
+Min=0.00 Really=0
+Lower quartile=0.00
+Median=0.00, ile(0.5)=0.00
+Upper quartile=0.00
+Max=0.00 Really=0
+Range=1
+Mean= 0.00
+SD= 0.00
+Bottom=0, top=410, base=0, x=0
+
+Total count=0
+Min=0.00 Really=0
+Lower quartile=0.00
+Median=0.00, ile(0.5)=0.00
+Upper quartile=0.00
+Max=0.00 Really=0
+Range=1
+Mean= 0.00
+SD= 0.00
+Bottom=0, top=410, base=0, x=0
+
+Total count=0
+Min=0.00 Really=0
+Lower quartile=0.00
+Median=0.00, ile(0.5)=0.00
+Upper quartile=0.00
+Max=0.00 Really=0
+Range=1
+Mean= 0.00
+SD= 0.00

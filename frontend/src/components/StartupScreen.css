@@ -1,0 +1,119 @@
+.startup {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--chrome);
+}
+
+.startup__header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 32px;
+  /* The reference tool's activation menu leads with a broad brand band; this is that, in MTC blue. */
+  background: linear-gradient(100deg, #ffffff 0%, #eef3f8 46%, var(--chrome) 100%);
+  border-bottom: 3px solid var(--brand);
+}
+
+.startup__logo {
+  width: 62px;
+  height: 62px;
+  background: url('/logo.svg') center / contain no-repeat;
+}
+
+.startup__header h1 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--brand-dark);
+}
+
+.startup__header p {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.startup__body {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 32px;
+  overflow: auto;
+}
+
+/* One row so both cards take the height of the taller of the two. */
+.startup__cards {
+  display: flex;
+  align-items: stretch;
+  gap: 20px;
+}
+
+.startup__card {
+  display: flex;
+  flex-direction: column;
+  width: 380px;
+  padding: 20px;
+  border: 1px solid var(--chrome-line);
+  border-radius: 6px;
+  background: var(--panel);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.startup__card--muted {
+  background: var(--chrome-dark);
+}
+
+.startup__card h2 {
+  margin: 0 0 14px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.startup__card select.field {
+  width: 100%;
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.startup__detail {
+  margin: 10px 0 0;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--text-dim);
+}
+
+/* Sits between two form fields, so it needs room below as well as above. */
+.startup__detail--spaced {
+  margin-bottom: 12px;
+}
+
+.startup__status {
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+/* Pinned to the bottom of the card so both cards' buttons line up. */
+.startup__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.startup__connect {
+  padding: 8px 22px;
+  font-size: 13px;
+}
+
+.startup__footer {
+  padding: 5px 12px;
+  background: var(--chrome-dark);
+  border-top: 1px solid var(--chrome-line);
+  font-size: 11px;
+  color: var(--text-dim);
+}

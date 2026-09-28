@@ -1,0 +1,160 @@
+/* Scroll box. At "fit" the frame fills it; magnified, the frame overflows and this pans. */
+.roi-editor {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.roi-editor.is-zoomed {
+  overflow: auto;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+/* The image and its overlay, sharing exactly one box. */
+.roi-editor__frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.roi-editor img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.roi-editor__placeholder {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+/* Sits exactly over the image; both use object-fit: contain with the same aspect ratio, so
+   sensor coordinates in the viewBox land on the pixels they describe. */
+.roi-editor__overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  /* Read-only in Run mode: clicks fall through to nothing rather than pretending to edit. */
+  pointer-events: none;
+}
+
+.roi-editor__overlay.is-editable {
+  pointer-events: auto;
+  cursor: crosshair;
+}
+
+.roi__rect {
+  fill: rgba(56, 189, 248, 0.08);
+  stroke: #38bdf8;
+  cursor: move;
+}
+
+.roi__rect.is-selected {
+  fill: rgba(56, 189, 248, 0.18);
+  stroke-dasharray: 6 4;
+}
+
+.roi__rect--drafting {
+  fill: rgba(56, 189, 248, 0.12);
+  stroke: #38bdf8;
+  stroke-dasharray: 6 4;
+  pointer-events: none;
+}
+
+.roi--pass .roi__rect {
+  fill: rgba(22, 163, 74, 0.12);
+  stroke: #16a34a;
+}
+
+.roi--fail .roi__rect {
+  fill: rgba(220, 38, 38, 0.16);
+  stroke: #dc2626;
+}
+
+.roi__label {
+  fill: #e5e7eb;
+  paint-order: stroke;
+  stroke: rgba(0, 0, 0, 0.75);
+  stroke-width: 3px;
+  pointer-events: none;
+  font-family: var(--mono);
+}
+
+.roi--pass .roi__label {
+  fill: #4ade80;
+}
+
+.roi--fail .roi__label {
+  fill: #f87171;
+}
+
+.roi__handle {
+  fill: #38bdf8;
+  stroke: #0f172a;
+  cursor: nwse-resize;
+}
+
+/* Masked-out areas. Hatched rather than filled: a solid block would hide the very thing the
+   operator is trying to aim at, and the point of the mask is that it sits over something. */
+.roi__mask {
+  fill: rgba(220, 60, 60, 0.18);
+  stroke: rgba(240, 90, 90, 0.9);
+  stroke-dasharray: 6 4;
+  pointer-events: none;
+}
+
+/* The position pattern and the area searched for it. Distinct from window colours because it is
+   not judged — it answers "where is the part", not "is the part good". */
+.roi-position__pattern {
+  fill: rgba(90, 190, 210, 0.1);
+  stroke: #4fc3d9;
+  stroke-dasharray: 10 5;
+  pointer-events: none;
+}
+
+/* Teaching mode lets the pattern be grabbed like a window. */
+.roi-editor__overlay.is-editable .roi-position__pattern {
+  pointer-events: all;
+  cursor: move;
+}
+
+.roi-position__pattern.is-selected {
+  stroke-dasharray: none;
+  fill: rgba(90, 190, 210, 0.2);
+}
+
+/* Position correction is off: still there to move or delete, but plainly not in use. */
+.roi-position.is-disabled {
+  opacity: 0.55;
+}
+
+.roi-position__search {
+  fill: none;
+  stroke: rgba(79, 195, 217, 0.45);
+  stroke-dasharray: 3 6;
+  pointer-events: none;
+}
+
+.roi-position__label {
+  fill: #4fc3d9;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.roi__rect--mask {
+  stroke: #f05a5a;
+}
+
+.roi__rect--pattern {
+  stroke: #4fc3d9;
+}
